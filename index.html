@@ -18,12 +18,40 @@
             background-size: cover; background-position: center; position: fixed; width: 100%; 
             z-index: 100; transition: 0.8s;
         }
+/* توسيط شريط التنقل وضمان مرونته على الموبايل */
+.nav-pills {
+    display: flex;
+    flex-wrap: nowrap; /* يمنع نزول الأزرار لسطر جديد */
+    overflow-x: auto; /* يسمح بالسحب يميناً ويساراً إذا ضاق الشاشة */
+    justify-content: center; /* التوسيط في الشاشات الواسعة */
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    scrollbar-width: none; /* إخفاء شريط السحب لجمالية التصميم */
+}
 
+.nav-pills::-webkit-scrollbar {
+    display: none; /* إخفاء شريط السحب لمتصفحات كروم وسفاري */
+}
+
+.nav-pills .nav-item {
+    flex: 0 0 auto; /* يحافظ على حجم الزر ثابتاً */
+}
+/* تنسيق زر الإغلاق ليكون فوق المحتوى */
+.modal-header .btn-close {
+    position: absolute;
+    top: 20px;
+    left: 15px; /* سيظهر على اليسار لأن الموقع RTL */
+    z-index: 1060;
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة لبيان الزر فوق الصور */
+    border-radius: 50%;
+    padding: 10px;
+}
         /* جعل النافذة (المودال) في أعلى طبقة ممكنة */
         .modal { z-index: 9999 !important; }
         .modal-backdrop { z-index: 9998 !important; }
 
-        .btn-enter { background-color: var(--gold); color: black; padding: 15px 60px; font-weight: 700; border-radius: 50px; border: none; transition: 0.3s; cursor: pointer; }
+        .btn-enter {max-width: 100%;
+    white-space: nowrap; background-color: var(--gold); color: black; padding: 15px 60px; font-weight: 700; border-radius: 50px; border: none; transition: 0.3s; cursor: pointer; }
         .btn-enter:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--gold); }
         
         #main-store { display: none; opacity: 0; transition: 1s; }
@@ -197,6 +225,9 @@
     <div class="modal fade" id="m-dress1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -226,6 +257,9 @@
 <div class="modal fade" id="m-dress2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress2" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -255,6 +289,9 @@
     <div class="modal fade" id="m-dress3" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress3" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -283,6 +320,9 @@
     <div class="modal fade" id="m-dress4" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress4" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -310,6 +350,9 @@
     <div class="modal fade" id="m-dress5" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress5" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -337,6 +380,9 @@
     <div class="modal fade" id="m-dress6" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress6" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -364,6 +410,9 @@
     <div class="modal fade" id="m-dress7" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-dress7" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -391,6 +440,9 @@
     <div class="modal fade" id="m-shirt1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-shirt1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -421,7 +473,9 @@
 <div class="modal fade" id="m-shirt2" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
             <div class="modal-body p-0">
                 <div id="c-shirt2" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -452,6 +506,9 @@
    <div class="modal fade" id="m-pajama1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-pajama1" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -480,6 +537,9 @@
     <div class="modal fade" id="m-pajama2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-pajama2" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -509,6 +569,9 @@
      <div class="modal fade" id="m-pajama3" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-pajama3" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -537,6 +600,9 @@
          <div class="modal fade" id="m-tops" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
+                <div class="modal-header border-0 p-2 d-flex justify-content-start">
+    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close" style="font-size: 0.8rem;"></button>
+</div>
                 <div class="modal-body p-0">
                     <div id="c-tops" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
