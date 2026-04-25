@@ -18,25 +18,37 @@
             background-size: cover; background-position: center; position: fixed; width: 100%; 
             z-index: 100; transition: 0.8s;
         }
-/* توسيط شريط التنقل وضمان مرونته على الموبايل */
+/* التنسيق المطور للشاشات الصغيرة والكبيرة */
 .nav-pills {
     display: flex;
-    flex-wrap: nowrap; /* يمنع نزول الأزرار لسطر جديد */
-    overflow-x: auto; /* يسمح بالسحب يميناً ويساراً إذا ضاق الشاشة */
-    justify-content: center; /* التوسيط في الشاشات الواسعة */
-    -webkit-overflow-scrolling: touch;
-    padding: 10px 0;
-    scrollbar-width: none; /* إخفاء شريط السحب لجمالية التصميم */
-}
-
-.nav-pills::-webkit-scrollbar {
-    display: none; /* إخفاء شريط السحب لمتصفحات كروم وسفاري */
+    flex-direction: column; /* عمودي للموبايل */
+    align-items: center;
+    padding: 20px 0;
+    gap: 12px; /* مسافة عمودية منتظمة بين الأزرار */
 }
 
 .nav-pills .nav-item {
-    flex: 0 0 auto; /* يحافظ على حجم الزر ثابتاً */
+    width: 85%; /* عرض مناسب للموبايل */
 }
-/* تنسيق زر الإغلاق ليكون فوق المحتوى */
+
+.nav-pills .nav-link {
+    width: 100%;
+    text-align: center;
+    margin: 0 !important; /* إلغاء أي هوامش قديمة لتجنب التداخل */
+}
+
+/* التنسيق للشاشات العريضة */
+@media (min-width: 768px) {
+    .nav-pills {
+        flex-direction: row; /* أفقي للشاشات الكبيرة */
+        justify-content: center;
+        gap: 15px; /* مسافة أفقية بين الأزرار */
+    }
+    
+    .nav-pills .nav-item {
+        width: auto; /* حجم الزر حسب النص */
+    }
+}
 .modal-header .btn-close {
     position: absolute;
     top: 20px;
