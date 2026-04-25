@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sündüs İstebrak | سندس إستبرق</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <style>
+        :root { --gold: #d4af37; --black: #0b0b0b; --card: #161616; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--black); color: white; overflow-x: hidden; }
+
+        /* تعديل الطبقات لضمان ظهور النافذة فوق شاشة الترحيب */
+        #welcome-screen {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('1000421461.jpg');
+            background-size: cover; background-position: center; position: fixed; width: 100%; 
+            z-index: 100; transition: 0.8s;
+        }
+
+        /* جعل النافذة (المودال) في أعلى طبقة ممكنة */
+        .modal { z-index: 9999 !important; }
+        .modal-backdrop { z-index: 9998 !important; }
+
+        .btn-enter { background-color: var(--gold); color: black; padding: 15px 60px; font-weight: 700; border-radius: 50px; border: none; transition: 0.3s; cursor: pointer; }
+        .btn-enter:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--gold); }
+        
+        #main-store { display: none; opacity: 0; transition: 1s; }
+        
+        .nav-pills .nav-link { color: white; border: 1px solid var(--gold); margin: 5px; border-radius: 30px; }
+        .nav-pills .nav-link.active { background-color: var(--gold); color: black; font-weight: bold; }
+        
+        .product-card { background: var(--card); border: 1px solid #222; border-radius: 20px; overflow: hidden; transition: 0.4s; cursor: pointer; margin-bottom: 20px; }
+        .product-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .product-img { width: 100%; height: 350px; object-fit: cover; }
+        
+        .modal-content { background: var(--card); border: 1px solid var(--gold); border-radius: 25px; color: white; }
+        
+        .carousel-item img { height: 500px; object-fit: contain; background: #000; }
+        .btn-whatsapp { background: #25d366; color: white !important; border-radius: 12px; padding: 12px; width: 100%; display: block; text-align: center; text-decoration: none; font-weight: 700; margin-top: 15px; }
+        .gold-text { color: var(--gold); }
+        .navbar { border-bottom: 2px solid var(--gold); background: #000 !important; }
+        
+        .btn-order-info { 
+            background: transparent; border: 1px solid var(--gold); color: var(--gold); 
+            padding: 12px; border-radius: 50px; font-weight: 600; transition: 0.3s; 
+        }
+        .btn-order-info:hover { background: var(--gold); color: black; box-shadow: 0 0 15px var(--gold); }
+    </style>
+</head>
+<body>
+
+  <div id="welcome-screen">
+    <img src="لوغو.jpeg" style="width:160px; height:160px; object-fit: cover; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px;">
+    <h1 class="gold-text fw-bold">Sündüs İstebrak</h1>
+    <p class="lead text-white-50 mb-4">أرقى الموديلات التركية</p>
+    
+    <div class="d-flex flex-column align-items-center gap-2 w-100 px-4" style="max-width: 350px;">
+       <button class="btn-enter w-100" onclick="enterStore()">دخول المتجر</button>
+   <button class="btn-order-info w-100" data-bs-toggle="modal" data-bs-target="#orderMethodModal">
+    طريقة الطلب والتواصل
+</button>
+    </div>
+</div>
+    <div id="main-store">
+        <nav class="navbar navbar-dark py-3 sticky-top text-center">
+            <div class="container justify-content-center">
+                <h3 class="gold-text m-0">Sündüs İstebrak</h3>
+            </div>
+        </nav>
+
+        <div class="container my-5">
+            <ul class="nav nav-pills justify-content-center mb-5">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-dresses">الفساتين</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-shirts">القمصان</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-pajamas">البيجامات</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-tops">البلوزات</button></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="tab-dresses">
+                    <div class="row g-4 text-center">
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress1">
+                                <img src="فستان1.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان أيروبين بونبون</h6><p class="gold-text">120,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress2">
+                                <img src="فستان 11.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان أيروبين بونبون</h6><p class="gold-text">120,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress3">
+                                <img src="فستان 111.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان جورجيت</h6><p class="gold-text">120,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress4">
+                                <img src="فستان 1111.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان</h6><p class="gold-text">120,000 ل.س</p></div>
+                            </div>
+                        </div>
+                         <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress5">
+                                <img src="فستان 11111.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان</h6><p class="gold-text">120,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress6">
+                                <img src="فستان 111111.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان مع بشت</h6><p class="gold-text">160,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress7">
+                                <img src="فستان 1111111.jpeg" class="product-img">
+                                <div class="p-3"><h6>فستان مع بشت</h6><p class="gold-text">160,000 ل.س</p></div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+
+               <div class="tab-pane fade" id="tab-shirts">
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-shirt1">
+                <img src="قميص مزكزك 1.jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>قميص</h6>
+                    <p class="gold-text">90,000 ل.س</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-shirt2">
+                <img src="قميص 1.jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>قميص</h6>
+                    <p class="gold-text">90,000 ل.س</p>
+                </div>   
+            </div>
+        </div>
+
+    </div> </div>
+                   <div class="tab-pane fade" id="tab-pajamas">
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama1">
+                <img src="بيجاما 1.jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>بيجاما</h6>
+                    <p class="gold-text">190,000 ل.س</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama2">
+                <img src="بيجاما 11.jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>بيجاما</h6>
+                    <p class="gold-text">190,000 ل.س</p>
+                </div>   
+            </div>
+        </div>
+
+            <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama3">
+                <img src="بيجاما 111 .jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>بيجاما</h6>
+                    <p class="gold-text">190,000 ل.س</p>
+                </div>   
+            </div>
+        </div>
+    </div> </div>
+            </div>
+              <div class="tab-pane fade" id="tab-tops">
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-md-4 col-6">
+            <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-tops">
+                <img src="بلوزة 1.jpeg" class="product-img">
+                <div class="p-3">
+                    <h6>بلوزة</h6>
+                    <p class="gold-text">80,000 ل.س</p>
+                </div>
+            </div>
+        </div>
+    </div> </div>
+        </div>
+    <div class="modal fade" id="m-dress1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress1" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان2.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان3.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان4.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان5.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان6.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان1.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress1" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress1" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان أيروبين بونبون</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : أيروبين بونبون AEROBİN PONPON </p> 
+                            <p> الغراماج: 170 غ/م2  </p>
+<p>الألوان المتوفرة: بيج - خمري - بترولي - خردلي - سومو - أسود</p>
+                                <p>السعر:  120 ألف</p>
+                        <a href="https://wa.me/963984123234?text=1 طلب فستان أيروبين" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="m-dress2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress2" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 22.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 33.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 44.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 55.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 66.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 11.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress2" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress2" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان أيروبين بونبون</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : أيروبين بونبون AEROBİN PONPON </p> 
+                            <p> الغراماج: 170 غ/م2  </p>
+<p>الألوان المتوفرة: بيج - خمري - بترولي - خردلي - سومو - أسود</p>
+                                <p>السعر:  120 ألف</p>
+                        <a href="https://wa.me/963984123234?text=2 طلب فستان أيروبين" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-dress3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress3" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 444.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 555.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 111.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress3" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress3" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان جورجيت</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p>اسم القماش : جورجيت JORJET</p> 
+                            <p> الغراماج: 180 غ/م2  </p>
+<p>الألوان المتوفرة: بنفسجي - اخضر - سومو - اسود - بوردو</p>
+                                <p>السعر:  120 ألف</p>
+                        <a href="https://wa.me/963984123234?text=طلب فستان جورجيت" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-dress4" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress4" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 2222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 3333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 4444.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 1111.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress4" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress4" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان طويل</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p>اسم القماش : برودة BRODE</p> 
+                            <p> الغراماج: 170 غ/م2  </p>
+<p>الألوان المتوفرة حسب النقشة: زهري - بنفسجي - أزرق - أخضر</p>
+                                <p>السعر:  120 ألف</p>
+                        <a href="https://wa.me/963984123234?text=1 طلب فستان طويل" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-dress5" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress5" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 22222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 33333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 44444.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 11111.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress5" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress5" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان طويل</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p>اسم القماش : برودة BRODE</p> 
+                            <p> الغراماج: 170 غ/م2  </p>
+<p>الألوان المتوفرة حسب النقشة: زهري - برتقالي - أزرق - أخضر</p>
+                                <p>السعر:  120 ألف</p>
+                        <a href="https://wa.me/963984123234?text=2 طلب فستان طويل" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-dress6" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress6" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 222222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 333333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 444444.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 111111.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress6" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress6" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان مع بشت</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p>اسم القماش : ميرا MİRA</p> 
+                            <p> الغراماج: 140 غ/م2  </p>
+<p>الألوان المتوفرة: قرميدي-  سومو - بوردو - أسود</p>
+                                <p>السعر:  160 ألف</p>
+                        <a href="https://wa.me/963984123234?text=1 طلب فستان مع بشت" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-dress7" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-dress7" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="فستان 2222222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 3333333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 4444444.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="فستان 1111111.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-dress7" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-dress7" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">فستان مع بشت</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p>اسم القماش : ميرا MİRA</p> 
+                            <p> الغراماج: 140 غ/م2  </p>
+<p>الألوان المتوفرة: قرميدي-  سومو - بوردو - أسود</p>
+                                <p>السعر:  160 ألف</p>
+                        <a href="https://wa.me/963984123234?text=2 طلب فستان مع بشت" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-shirt1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-shirt1" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="قميص مزكزك 2.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 3.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 4.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 5.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 6.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 7.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="قميص مزكزك 1.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-shirt1" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-shirt1" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">قميص</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : دبي DUBAI </p> 
+                            <p> الغراماج: 130 غ/م2  </p>
+<p>الألوان المتوفرة: أسود - بوردو - أبيض - خردلي - أحمر - أزرق - زهري</p>
+                                <p>السعر:  90 ألف</p>
+                        <a href="https://wa.me/963984123234?text=1 طلب قميص " class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="m-shirt2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body p-0">
+                <div id="c-shirt2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="قميص2.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص3.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص4.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص5.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص 1.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص6.jpeg" class="d-block w-100"></div>
+                        <div class="carousel-item"><img src="قميص7.jpeg" class="d-block w-100"></div>
+                    </div>
+                    <button class="carousel-control-prev" data-bs-target="#c-shirt2" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                    <button class="carousel-control-next" data-bs-target="#c-shirt2" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                </div>
+                <div class="p-4 text-end">
+                    <h4 class="gold-text">قميص</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : دبي DUBAI </p> 
+                            <p> الغراماج: 130 غ/م2  </p>
+<p>الألوان المتوفرة: أسود - بوردو - أبيض - خردلي - أحمر - أزرق - زهري</p>
+                                <p>السعر:  90 ألف</p>
+                    <a href="https://wa.me/963984123234?text=طلب قميص 2" class="btn-whatsapp">اطلب عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   <div class="modal fade" id="m-pajama1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-pajama1" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="بيجاما 3.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 2.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 1.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 4.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 5.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-pajama1" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-pajama1" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">بيجاما</h4>
+                        <p>المقاسات: 38-40-42</p>
+                            <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
+                            <p> الغراماج: 200 غ/م2  </p>
+<p>الألوان المتوفرة: بيج - أسود - أحمر - زهري - فضي</p>
+                                <p>السعر:  190 ألف</p>
+                        <a href="https://wa.me/963984123234?text=طلب بيجاما 1" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="m-pajama2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-pajama2" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="بيجاما 33.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 22.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 11.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 44.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 55.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 66.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-pajama2" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-pajama2" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">بيجاما</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
+                            <p> الغراماج: 200 غ/م2  </p>
+<p>الألوان المتوفرة: بيج - أسود - أحمر - أصفر - أزرق - عفني</p>
+                                <p>السعر:  190 ألف</p>
+                        <a href="https://wa.me/963984123234?text=طلب بيجاما 2" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="m-pajama3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-pajama3" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="بيجاما 333.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 222.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما 111 .jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بيجاما444.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-pajama3" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-pajama3" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">بيجاما</h4>
+                        <p>المقاسات: 38-40-42-44</p>
+                            <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
+                            <p> الغراماج: 200 غ/م2  </p>
+<p>الألوان المتوفرة: سومو - أسود - أحمر - أصفر</p>
+                                <p>السعر:  190 ألف</p>
+                        <a href="https://wa.me/963984123234?text=طلب بيجاما 3" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+         <div class="modal fade" id="m-tops" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div id="c-tops" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img src="بلوزة 3.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بلوزة 2.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بلوزة 1.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بلوزة 4.jpeg" class="d-block w-100"></div>
+                            <div class="carousel-item"><img src="بلوزة 5.jpeg" class="d-block w-100"></div>
+                        </div>
+                        <button class="carousel-control-prev" data-bs-target="#c-tops" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" data-bs-target="#c-tops" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                    <div class="p-4 text-end">
+                        <h4 class="gold-text">بلوزة نصف كم</h4>
+                        <p>االمقاسات: S-M-L-XL-XXL</p>
+                            <p>اسم القماش : سوبريم SÜPTEM </p> 
+                            <p> الغراماج: 180 غ/م2  </p>
+<p>الألوان المتوفرة: بيج - سماوي - بوردو - أسود -أبيض</p>
+                                <p>السعر:  80 ألف</p>
+                        <a href="https://wa.me/963984123234?text=طلب بلوزة 1" class="btn-whatsapp">اطلب عبر واتساب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="orderMethodModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-end" style="background: var(--card); border: 1px solid var(--gold); border-radius: 25px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title gold-text fw-bold">طريقة الطلب والتواصل</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="delivery-info mb-4 p-3 text-center" style="background: rgba(212, 175, 55, 0.1); border-radius: 15px; border: 1px dashed var(--gold);">
+                    <div class="mb-2">
+                        <i class="fas fa-map-marker-alt gold-text ms-2"></i>
+                        <span>توصيل مأجور ضمن حلب (ساحة الجامعة)</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-truck-moving gold-text ms-2"></i>
+                        <span>شحن متوفر لكافة المحافظات السورية</span>
+                    </div>
+                </div>
+
+                <ul class="list-unstyled text-white" style="line-height: 2.2;">
+                    <li><i class="fas fa-shopping-bag gold-text ms-2"></i> اختر الموديل والمقاس من المتجر.</li>
+                    <li><i class="fas fa-comment-dots gold-text ms-2"></i> اضغط على زر "واتساب" لإرسال الطلب.</li>
+                    <li><i class="fas fa-check-double gold-text ms-2"></i> سنقوم بتثبيت الطلب وإبلاغكم بموعد التسليم.</li>
+                </ul>
+
+                <a href="https://wa.me/963984123234" class="btn-whatsapp mt-3" style="text-decoration: none;">
+                    <i class="fab fa-whatsapp ms-2"></i> مراسلة الإدارة مباشرة
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function enterStore() {
+        const welcome = document.getElementById('welcome-screen');
+        welcome.style.opacity = '0';
+        welcome.style.pointerEvents = 'none'; 
+        setTimeout(() => {
+            welcome.style.display = 'none';
+            const store = document.getElementById('main-store');
+            store.style.display = 'block';
+            setTimeout(() => store.style.opacity = '1', 50);
+        }, 800);
+    }
+
+    // هاد التعديل الجوهري اللي رح يخليها تظهر فوراً
+    document.addEventListener('DOMContentLoaded', function() {
+        const modalElement = document.getElementById('orderMethodModal');
+        modalElement.addEventListener('show.bs.modal', function () {
+            // نقل المودال ليكون خارج أي حاوية تعيق ظهوره
+            document.body.appendChild(modalElement);
+        });
+    });
+</script>
+</body>
+</html>
