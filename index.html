@@ -26,7 +26,38 @@
     padding: 20px 0;
     gap: 12px; /* مسافة عمودية منتظمة بين الأزرار */
 }
+.old-price { 
+       font-weight: normal ;
+        color: #ff4d4d; /* أحمر واضح للشطب */
+        font-size: 0.9rem;
+        margin-left: 8px;
+        position: relative;
 
+    }
+    .old-price::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 55%; /* بيجيب الخط بالنص تماماً */
+        width: 100%;
+        height: 1.5px; /* سماكة الخط */
+        background-color: #ff4d4d; /* لون الخط أحمر */
+    }
+    .new-price { 
+        color: #28a745; /* أخضر للخصم */
+        font-size: 1.4rem; 
+        font-weight: bold;
+    }
+    .eid-badge {
+        background-color: var(--gold);
+        color: black;
+        font-size: 0.75rem;
+        padding: 2px 10px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 .nav-pills .nav-item {
     width: 85%; /* عرض مناسب للموبايل */
 }
@@ -36,7 +67,24 @@
     text-align: center;
     margin: 0 !important; /* إلغاء أي هوامش قديمة لتجنب التداخل */
 }
+/* حل مشكلة الفراغات في الأقسام */
+.tab-content {
+    width: 100%;
+}
 
+.tab-pane {
+    display: none; /* إخفاء غير النشط تماماً من المساحة */
+}
+
+.tab-pane.active {
+    display: block; /* إظهار النشط فقط */
+}
+
+/* لضمان أن صفوف المنتجات تبدأ من الأعلى دائماً */
+.row {
+    --bs-gutter-y: 1.5rem;
+    align-content: flex-start;
+}
 /* التنسيق للشاشات العريضة */
 @media (min-width: 768px) {
     .nav-pills {
@@ -94,8 +142,8 @@
   <div id="welcome-screen">
     <img src="لوغو.jpeg" style="width:160px; height:160px; object-fit: cover; border-radius:50%; border:3px solid var(--gold); margin-bottom:20px;">
     <h1 class="gold-text fw-bold">Sündüs İstebrak</h1>
-    <p class="lead text-white-50 mb-4">أرقى الموديلات التركية</p>
-    
+    <p class="lead text-white-50 mb-4">أرقى الموديلات التركية   ( الألبسة قماش تركي وصنعت في تركيا )</p>
+
     <div class="d-flex flex-column align-items-center gap-2 w-100 px-4" style="max-width: 350px;">
        <button class="btn-enter w-100" onclick="enterStore()">دخول المتجر</button>
    <button class="btn-order-info w-100" data-bs-toggle="modal" data-bs-target="#orderMethodModal">
@@ -124,43 +172,43 @@
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress1">
                                 <img src="فستان1.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان أيروبين بونبون</h6><p class="gold-text">120,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان أيروبين بونبون</h6><div><span class="old-price">150,000 ل.س</span> <span class="new-price">100,000 ل.س</span></div></div>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress2">
                                 <img src="فستان 11.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان أيروبين بونبون</h6><p class="gold-text">120,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان أيروبين بونبون</h6><div><span class="old-price">150,000 ل.س</span> <span class="new-price">100,000 ل.س</span></div></div>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress3">
                                 <img src="فستان 111.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان جورجيت</h6><p class="gold-text">120,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان جورجيت</h6><div><span class="old-price">150,000 ل.س</span> <span class="new-price">100,000 ل.س</span></div></div>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress4">
                                 <img src="فستان 1111.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان</h6><p class="gold-text">120,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان</h6><div><span class="old-price">150,000 ل.س</span> <span class="new-price">100,000 ل.س</span></div></div>
                             </div>
                         </div>
                          <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress5">
                                 <img src="فستان 11111.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان</h6><p class="gold-text">120,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان</h6><div><span class="old-price">150,000 ل.س</span> <span class="new-price">100,000 ل.س</span></div></div>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress6">
                                 <img src="فستان 111111.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان مع بشت</h6><p class="gold-text">160,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان مع بشت</h6><div><span class="old-price">170,000 ل.س</span> <span class="new-price">120,000 ل.س</span></div></div>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-dress7">
                                 <img src="فستان 1111111.jpeg" class="product-img">
-                                <div class="p-3"><h6>فستان مع بشت</h6><p class="gold-text">160,000 ل.س</p></div>
+                                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div><h6>فستان مع بشت</h6><div><span class="old-price">170,000 ل.س</span> <span class="new-price">120,000 ل.س</span></div></div>
                             </div>
                         </div>
                         </div>
@@ -171,19 +219,17 @@
         <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-shirt1">
                 <img src="قميص مزكزك 1.jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>قميص</h6>
-                    <p class="gold-text">90,000 ل.س</p>
-                </div>
-            </div>
+                    <div><span class="old-price">100,000 ل.س</span> <span class="new-price">70,000 ل.س</span></div></div>
         </div>
-
+        </div>
         <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-shirt2">
                 <img src="قميص 1.jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>قميص</h6>
-                    <p class="gold-text">90,000 ل.س</p>
+                    <div><span class="old-price">100,000 ل.س</span> <span class="new-price">70,000 ل.س</span></div></div>
                 </div>   
             </div>
         </div>
@@ -194,18 +240,18 @@
         <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama1">
                 <img src="بيجاما 1.jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>بيجاما</h6>
-                    <p class="gold-text">190,000 ل.س</p>
+                    <div><span class="old-price">190,000 ل.س</span> <span class="new-price">120,000 ل.س</span></div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama2">
                 <img src="بيجاما 11.jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>بيجاما</h6>
-                    <p class="gold-text">190,000 ل.س</p>
+                    <div><span class="old-price">190,000 ل.س</span> <span class="new-price">120,000 ل.س</span></div>
                 </div>   
             </div>
         </div>
@@ -213,9 +259,9 @@
             <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-pajama3">
                 <img src="بيجاما 111 .jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>بيجاما</h6>
-                    <p class="gold-text">190,000 ل.س</p>
+                    <div><span class="old-price">190,000 ل.س</span> <span class="new-price">120,000 ل.س</span></div>
                 </div>   
             </div>
         </div>
@@ -226,9 +272,9 @@
         <div class="col-md-4 col-6">
             <div class="product-card" data-bs-toggle="modal" data-bs-target="#m-tops">
                 <img src="بلوزة 1.jpeg" class="product-img">
-                <div class="p-3">
+                <div class="p-3"><div class="eid-badge">تخفيض بمناسبة العيد</div>
                     <h6>بلوزة</h6>
-                    <p class="gold-text">80,000 ل.س</p>
+                    <div><span class="old-price">90,000 ل.س</span> <span class="new-price">50,000 ل.س</span></div>
                 </div>
             </div>
         </div>
@@ -259,7 +305,6 @@
                             <p> اسم القماش : أيروبين بونبون AEROBİN PONPON </p> 
                             <p> الغراماج: 170 غ/م2  </p>
 <p>الألوان المتوفرة: بيج - خمري - بترولي - خردلي - سومو - أسود</p>
-                                <p>السعر:  120 ألف</p>
                         <a href="https://wa.me/963984123234?text=1 طلب فستان أيروبين" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -291,7 +336,6 @@
                             <p> اسم القماش : أيروبين بونبون AEROBİN PONPON </p> 
                             <p> الغراماج: 170 غ/م2  </p>
 <p>الألوان المتوفرة: بيج - خمري - بترولي - خردلي - سومو - أسود</p>
-                                <p>السعر:  120 ألف</p>
                         <a href="https://wa.me/963984123234?text=2 طلب فستان أيروبين" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -322,7 +366,6 @@
                             <p>اسم القماش : جورجيت JORJET</p> 
                             <p> الغراماج: 180 غ/م2  </p>
 <p>الألوان المتوفرة: بنفسجي - اخضر - سومو - اسود - بوردو</p>
-                                <p>السعر:  120 ألف</p>
                         <a href="https://wa.me/963984123234?text=طلب فستان جورجيت" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -352,7 +395,6 @@
                             <p>اسم القماش : برودة BRODE</p> 
                             <p> الغراماج: 170 غ/م2  </p>
 <p>الألوان المتوفرة حسب النقشة: زهري - بنفسجي - أزرق - أخضر</p>
-                                <p>السعر:  120 ألف</p>
                         <a href="https://wa.me/963984123234?text=1 طلب فستان طويل" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -382,7 +424,6 @@
                             <p>اسم القماش : برودة BRODE</p> 
                             <p> الغراماج: 170 غ/م2  </p>
 <p>الألوان المتوفرة حسب النقشة: زهري - برتقالي - أزرق - أخضر</p>
-                                <p>السعر:  120 ألف</p>
                         <a href="https://wa.me/963984123234?text=2 طلب فستان طويل" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -412,7 +453,6 @@
                             <p>اسم القماش : ميرا MİRA</p> 
                             <p> الغراماج: 140 غ/م2  </p>
 <p>الألوان المتوفرة: قرميدي-  سومو - بوردو - أسود</p>
-                                <p>السعر:  160 ألف</p>
                         <a href="https://wa.me/963984123234?text=1 طلب فستان مع بشت" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -442,7 +482,6 @@
                             <p>اسم القماش : ميرا MİRA</p> 
                             <p> الغراماج: 140 غ/م2  </p>
 <p>الألوان المتوفرة: قرميدي-  سومو - بوردو - أسود</p>
-                                <p>السعر:  160 ألف</p>
                         <a href="https://wa.me/963984123234?text=2 طلب فستان مع بشت" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -475,7 +514,6 @@
                             <p> اسم القماش : دبي DUBAI </p> 
                             <p> الغراماج: 130 غ/م2  </p>
 <p>الألوان المتوفرة: أسود - بوردو - أبيض - خردلي - أحمر - أزرق - زهري</p>
-                                <p>السعر:  90 ألف</p>
                         <a href="https://wa.me/963984123234?text=1 طلب قميص " class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -508,7 +546,6 @@
                             <p> اسم القماش : دبي DUBAI </p> 
                             <p> الغراماج: 130 غ/م2  </p>
 <p>الألوان المتوفرة: أسود - بوردو - أبيض - خردلي - أحمر - أزرق - زهري</p>
-                                <p>السعر:  90 ألف</p>
                     <a href="https://wa.me/963984123234?text=طلب قميص 2" class="btn-whatsapp">اطلب عبر واتساب</a>
                 </div>
             </div>
@@ -539,7 +576,6 @@
                             <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
                             <p> الغراماج: 200 غ/م2  </p>
 <p>الألوان المتوفرة: بيج - أسود - أحمر - زهري - فضي</p>
-                                <p>السعر:  190 ألف</p>
                         <a href="https://wa.me/963984123234?text=طلب بيجاما 1" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -571,7 +607,6 @@
                             <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
                             <p> الغراماج: 200 غ/م2  </p>
 <p>الألوان المتوفرة: بيج - أسود - أحمر - أصفر - أزرق - عفني</p>
-                                <p>السعر:  190 ألف</p>
                         <a href="https://wa.me/963984123234?text=طلب بيجاما 2" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -601,7 +636,6 @@
                             <p> اسم القماش : إيكيبليك İKİ İPLİK </p> 
                             <p> الغراماج: 200 غ/م2  </p>
 <p>الألوان المتوفرة: سومو - أسود - أحمر - أصفر</p>
-                                <p>السعر:  190 ألف</p>
                         <a href="https://wa.me/963984123234?text=طلب بيجاما 3" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -633,7 +667,6 @@
                             <p>اسم القماش : سوبريم SÜPTEM </p> 
                             <p> الغراماج: 180 غ/م2  </p>
 <p>الألوان المتوفرة: بيج - سماوي - بوردو - أسود -أبيض</p>
-                                <p>السعر:  80 ألف</p>
                         <a href="https://wa.me/963984123234?text=طلب بلوزة 1" class="btn-whatsapp">اطلب عبر واتساب</a>
                     </div>
                 </div>
@@ -694,6 +727,12 @@
             document.body.appendChild(modalElement);
         });
     });
+    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(button => {
+    button.addEventListener('shown.bs.tab', () => {
+        window.scrollTo(0, window.scrollY + 1); // حركة بسيطة لتحديث الشاشة
+        window.scrollTo(0, window.scrollY - 1);
+    });
+});
 </script>
 </body>
 </html>
